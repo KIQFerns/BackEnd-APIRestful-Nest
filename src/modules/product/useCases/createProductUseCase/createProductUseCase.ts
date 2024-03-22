@@ -1,13 +1,17 @@
+import { Decimal } from '@prisma/client/runtime/library';
 import { Product } from '../../entities/product.entity';
 import { ProductRepository } from '../../repositories/product.repository';
+import { Injectable } from '@nestjs/common';
 
 interface CreateProductRequest {
   name: string;
   description?: string;
   userId: string;
-  value: number;
+  value: Decimal;
   quantity: number;
 }
+
+@Injectable()
 export class CreateProductUseCase {
   constructor(private productRepository: ProductRepository) {}
 

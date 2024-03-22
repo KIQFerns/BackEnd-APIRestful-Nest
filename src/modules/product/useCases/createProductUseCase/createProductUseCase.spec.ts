@@ -1,3 +1,4 @@
+import { Decimal } from '@prisma/client/runtime/library';
 import { ProductRepositoryInMemory } from '../../repositories/product.repository.memory';
 import { CreateProductUseCase } from './createProductUseCase';
 
@@ -15,7 +16,7 @@ describe('Create note', () => {
 
     const product = await createProductUseCase.execute({
       name: 'celular',
-      value: 10.5,
+      value: new Decimal(10.5),
       quantity: 5,
       userId: 'any',
     });

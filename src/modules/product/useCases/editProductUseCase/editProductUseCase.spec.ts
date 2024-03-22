@@ -5,6 +5,7 @@ import { MakeProduct } from '../../factories/product.factory';
 import { NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { ProductsNotFoundException } from '../../exceptions/productNotFoundException';
 import { ProductWithoutPermissionException } from '../../exceptions/productWithouPermissionException';
+import { Decimal } from '@prisma/client/runtime/library';
 
 let productRepositoryInMemory: ProductRepositoryInMemory;
 let editProductUseCase: EditProductUseCase;
@@ -26,7 +27,7 @@ describe('Edit product', () => {
     await editProductUseCase.execute({
       name: newName,
       description: newDescription,
-      value: 5,
+      value: new Decimal(5),
       quantity: 1,
       productId: product.id,
       userId: user.id,
@@ -42,7 +43,7 @@ describe('Edit product', () => {
     expect(async () => {
       await editProductUseCase.execute({
         name: 'Celular',
-        value: 5,
+        value: new Decimal(5),
         quantity: 1,
         productId: 'invalidId',
         userId: 'invalidId',
@@ -57,7 +58,7 @@ describe('Edit product', () => {
     expect(async () => {
       await editProductUseCase.execute({
         name: 'Celular',
-        value: 5,
+        value: new Decimal(5),
         quantity: 1,
         productId: product.id,
         userId: 'invalidId',

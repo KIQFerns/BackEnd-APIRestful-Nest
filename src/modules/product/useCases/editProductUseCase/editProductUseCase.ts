@@ -1,17 +1,19 @@
-import { NotFoundException, UnauthorizedException } from '@nestjs/common';
-import { Product } from '../../entities/product.entity';
 import { ProductRepository } from '../../repositories/product.repository';
 import { ProductsNotFoundException } from '../../exceptions/productNotFoundException';
 import { ProductWithoutPermissionException } from '../../exceptions/productWithouPermissionException';
+import { Decimal } from '@prisma/client/runtime/library';
+import { Injectable } from '@nestjs/common';
 
 interface EditProductRequest {
   productId: string;
   name: string;
   description?: string;
   userId: string;
-  value: number;
+  value: Decimal;
   quantity: number;
 }
+
+@Injectable()
 export class EditProductUseCase {
   constructor(private productRepository: ProductRepository) {}
 

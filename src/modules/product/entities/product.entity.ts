@@ -1,10 +1,11 @@
+import { Decimal } from '@prisma/client/runtime/library';
 import { randomUUID } from 'crypto';
 import { Replace } from 'src/utils/replace';
 
 interface ProductProps {
   name: string;
   description: string | null;
-  value: number;
+  value: Decimal;
   quantity: number;
   userId: string;
   createdAt: Date;
@@ -23,7 +24,8 @@ export class Product {
   ) {
     this.props = {
       ...props,
-      createdAt: props.createdAt || new Date(),
+      createdAt: props.createdAt ?? new Date(),
+      value: new Decimal(props.value),
       description: props.description ?? null,
     };
     this._id = id || randomUUID();
@@ -41,11 +43,11 @@ export class Product {
     this.props.name = name;
   }
 
-  get value(): number {
+  get value(): Decimal {
     return this.props.value;
   }
 
-  set value(value: number) {
+  set value(value: Decimal) {
     this.props.value = value;
   }
 

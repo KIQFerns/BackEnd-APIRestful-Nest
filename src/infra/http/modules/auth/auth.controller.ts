@@ -7,10 +7,8 @@ import {
   Request,
   UseGuards,
 } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
 import { SignInUseCase } from 'src/modules/auth/useCases/signInUseCase/signInUseCase';
 import { localAuthGuard } from './guards/localAuth.guard';
-import { JwtAuthGuard } from './guards/jwtAuth.guard';
 import { Public } from './decorators/ispublic';
 import { AuthenticatedRequestModel } from './models/authenticatedRequestModel';
 
@@ -27,5 +25,11 @@ export class AuthController {
       user: request.user,
     });
     return { access_token };
+  }
+
+  @Get('test')
+  @Public()
+  async test(@Request() request: AuthenticatedRequestModel) {
+    return 'tet';
   }
 }

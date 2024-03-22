@@ -1,4 +1,4 @@
-import { User } from 'src/modules/user/entities/users.entity';
+import { User } from 'src/modules/user/entities/user.entity';
 import { UserRepository } from 'src/modules/user/repositories/users.repository';
 import { PrismaService } from '../prisma.service';
 import { PrismaUserMapper } from '../mappers/PrismaUserMapper';
@@ -14,5 +14,11 @@ export class PrismaUserRepository implements UserRepository {
     await this.prisma.user.create({
       data: UserRaw,
     });
+  }
+
+  async findByEmail(email: string): Promise<User | null> {
+    const user = await this.prisma.user.findUnique({ where: { email } });
+    if (!user) return null;
+    return PrismaUserMapper.toDomain(user);
   }
 }

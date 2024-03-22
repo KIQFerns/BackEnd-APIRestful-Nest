@@ -2,6 +2,7 @@ import { Controller, Post, Body } from '@nestjs/common';
 import { UsersCreateUseCase } from 'src/modules/user/useCases/createUserUseCase/usersCreateUseCase';
 import { createUserBody } from './dtos/createUserBody';
 import { UserViewModel } from './viewModel/userViewModel';
+import { Public } from '../auth/decorators/ispublic';
 
 @Controller('users')
 export class UserController {

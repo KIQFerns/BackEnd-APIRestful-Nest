@@ -1,20 +1,22 @@
-import { UsersCreateUseCase } from './usersCreateUseCase';
+import { CreateUserUseCase } from './createUserUseCase';
 import { UserRepositoryInMemory } from '../../repositories/user.repository.memory';
 import { compare } from 'bcrypt';
+import { MakeUser } from '../../factories/user.factory';
+import { CreateProductUseCase } from 'src/modules/product/useCases/createProductUseCase/createProductUseCase';
 
-let usersCreateUseCase: UsersCreateUseCase;
+let createUserUseCase: CreateUserUseCase;
 let userRepositoryInMemory: UserRepositoryInMemory;
 
 describe('Create User', () => {
   beforeEach(() => {
     userRepositoryInMemory = new UserRepositoryInMemory();
-    usersCreateUseCase = new UsersCreateUseCase(userRepositoryInMemory);
+    createUserUseCase = new CreateUserUseCase(userRepositoryInMemory);
   });
 
   it('Should be able to create user', async () => {
     expect(userRepositoryInMemory.users).toEqual([]);
 
-    const user = await usersCreateUseCase.execute({
+    const user = await createUserUseCase.execute({
       email: 'email@email',
       name: 'Vitor',
       password: '123456789',
@@ -26,7 +28,7 @@ describe('Create User', () => {
   it('Should be able to create user with password encrypted', async () => {
     const userPasswordWithoutEncryption = '123456789';
 
-    const user = await usersCreateUseCase.execute({
+    const user = await createUserUseCase.execute({
       email: 'email@email',
       name: 'Vitor',
       password: userPasswordWithoutEncryption,
@@ -38,5 +40,20 @@ describe('Create User', () => {
     );
 
     expect(userHasPasswordEncrypted).toBeTruthy();
+  });
+
+  it('Should be able to throw error with create user with email that already exits', () => {
+    const user = MakeUser({});
+
+    userRepositoryInMemory.users = [user];
+
+    expect(
+      async () =>
+        await createUserUseCase.execute({
+          email: user.email,
+          name: 'name',
+          password: 'password',
+        }),
+    );
   });
 });

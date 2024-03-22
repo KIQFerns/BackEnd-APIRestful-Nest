@@ -1,6 +1,8 @@
 import { NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { Product } from '../../entities/product.entity';
 import { ProductRepository } from '../../repositories/product.repository';
+import { ProductsNotFoundException } from '../../exceptions/productNotFoundException';
+import { ProductWithoutPermissionException } from '../../exceptions/productWithouPermissionException';
 
 interface EditProductRequest {
   productId: string;
@@ -23,9 +25,10 @@ export class EditProductUseCase {
   }: EditProductRequest) {
     const product = await this.productRepository.findById(productId);
 
-    if (!product) throw new NotFoundException();
+    if (!product) throw new ProductsNotFoundException();
 
-    if (product.userId != userId) throw new UnauthorizedException();
+    if (product.userId != userId)
+      throw new ProductWithoutPermissionException({ actionName: 'editar' });
 
     product.description = description ?? null;
     product.name = name;

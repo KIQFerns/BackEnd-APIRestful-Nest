@@ -3,6 +3,8 @@ import { ProductRepositoryInMemory } from '../../repositories/product.repository
 import { GetProductUseCase } from './getProductUseCase';
 import { MakeProduct } from '../../factories/product.factory';
 import { NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { ProductWithoutPermissionException } from '../../exceptions/productWithouPermissionException';
+import { ProductsNotFoundException } from '../../exceptions/productNotFoundException';
 
 let productRepositoryInMemory: ProductRepositoryInMemory;
 let getProductUseCase: GetProductUseCase;
@@ -35,7 +37,7 @@ describe('Get product', () => {
         productId: 'invalidId',
         userId: 'invalidId',
       });
-    }).rejects.toThrow(NotFoundException);
+    }).rejects.toThrow(ProductsNotFoundException);
   });
 
   it('Should be able to throw error when product has another user', async () => {
@@ -47,6 +49,6 @@ describe('Get product', () => {
         productId: product.id,
         userId: 'invalidId',
       });
-    }).rejects.toThrow(UnauthorizedException);
+    }).rejects.toThrow(ProductWithoutPermissionException);
   });
 });

@@ -4,6 +4,8 @@ import { DeleteProductUseCase } from './deleteProductUseCase';
 import { MakeProduct } from '../../factories/product.factory';
 import { MakeUser } from 'src/modules/user/factories/user.factory';
 import { NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { ProductsNotFoundException } from '../../exceptions/productNotFoundException';
+import { ProductWithoutPermissionException } from '../../exceptions/productWithouPermissionException';
 
 let productRepositoryInMemory: ProductRepositoryInMemory;
 let deleteProductUseCase: DeleteProductUseCase;
@@ -30,7 +32,7 @@ describe('Delete product', () => {
         productId: 'invalidId',
         userId: 'invalidId',
       });
-    }).rejects.toThrow(NotFoundException);
+    }).rejects.toThrow(ProductsNotFoundException);
   });
 
   it('Should be able to throw error when product has another user', async () => {
@@ -42,6 +44,6 @@ describe('Delete product', () => {
         productId: product.id,
         userId: 'invalidId',
       });
-    }).rejects.toThrow(UnauthorizedException);
+    }).rejects.toThrow(ProductWithoutPermissionException);
   });
 });

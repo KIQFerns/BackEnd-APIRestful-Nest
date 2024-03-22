@@ -1,6 +1,8 @@
 import { NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { Product } from '../../entities/product.entity';
 import { ProductRepository } from '../../repositories/product.repository';
+import { ProductsNotFoundException } from '../../exceptions/productNotFoundException';
+import { ProductWithoutPermissionException } from '../../exceptions/productWithouPermissionException';
 
 interface DeleteProductRequest {
   productId: string;
@@ -13,9 +15,10 @@ export class DeleteProductUseCase {
   async execute({ productId, userId }: DeleteProductRequest) {
     const product = await this.productRepository.findById(productId);
 
-    if (!product) throw new NotFoundException();
+    if (!product) throw new ProductsNotFoundException();
 
-    if (product.userId != userId) throw new UnauthorizedException();
+    if (product.userId != userId)
+      throw new ProductWithoutPermissionException({ actionName: 'deletar' });
 
     await this.productRepository.delete(productId);
   }

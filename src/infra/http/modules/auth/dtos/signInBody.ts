@@ -9,7 +9,6 @@ export class SignInBody {
   @IsEmailCustom()
   email: string;
 
-  @IsNotEmptyCustom()
   @IsStringCustom()
   @MinLengthCustom(6)
   password: string;

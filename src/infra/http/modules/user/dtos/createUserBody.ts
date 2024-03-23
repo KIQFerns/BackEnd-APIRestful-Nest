@@ -4,17 +4,17 @@ import { IsStringCustom } from 'src/infra/http/classValidators/decorators/isStri
 import { MinLengthCustom } from 'src/infra/http/classValidators/decorators/minLengthCustom';
 
 export class CreateUserBody {
-  @IsStringCustom()
   @IsNotEmptyCustom()
+  @IsStringCustom()
   @IsEmailCustom()
   email: string;
 
-  @IsStringCustom()
   @IsNotEmptyCustom()
+  @IsStringCustom()
   name: string;
 
-  @IsStringCustom()
   @IsNotEmptyCustom()
+  @IsStringCustom()
   @MinLengthCustom(6)
   password: string;
 }

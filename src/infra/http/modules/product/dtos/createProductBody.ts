@@ -1,6 +1,8 @@
 import { Decimal } from '@prisma/client/runtime/library';
-import { IsDecimal, IsNumber, IsOptional } from 'class-validator';
+import { IsOptional } from 'class-validator';
+import { IsDecimalCustom } from 'src/infra/http/classValidators/decorators/isDecimalCustom';
 import { IsNotEmptyCustom } from 'src/infra/http/classValidators/decorators/isNotEmptyCustom';
+import { IsNumberCustom } from 'src/infra/http/classValidators/decorators/isNumberCustom';
 import { IsStringCustom } from 'src/infra/http/classValidators/decorators/isStringCustom';
 
 export class CreateProductBody {
@@ -12,11 +14,11 @@ export class CreateProductBody {
   @IsOptional()
   description: string;
 
-  @IsDecimal()
+  @IsDecimalCustom()
   @IsNotEmptyCustom()
   value: Decimal;
 
-  @IsNumber()
+  @IsNumberCustom()
   @IsNotEmptyCustom()
   quantity: number;
 }

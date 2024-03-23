@@ -1,14 +1,14 @@
-import { NotFoundException, UnauthorizedException } from '@nestjs/common';
-import { Product } from '../../entities/product.entity';
 import { ProductRepository } from '../../repositories/product.repository';
 import { ProductsNotFoundException } from '../../exceptions/productNotFoundException';
 import { ProductWithoutPermissionException } from '../../exceptions/productWithouPermissionException';
+import { Injectable } from '@nestjs/common';
 
 interface DeleteProductRequest {
   productId: string;
   userId: string;
 }
 
+@Injectable()
 export class DeleteProductUseCase {
   constructor(private productRepository: ProductRepository) {}
 

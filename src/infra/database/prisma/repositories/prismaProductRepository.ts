@@ -15,7 +15,9 @@ export class PrismaProductRepository implements ProductRepository {
   }
 
   async findById(id: string): Promise<Product | null> {
-    const productRaw = await this.prisma.product.findUnique({ where: { id } });
+    const productRaw = await this.prisma.product.findUnique({
+      where: { id: id },
+    });
 
     if (!productRaw) return null;
 
@@ -45,7 +47,7 @@ export class PrismaProductRepository implements ProductRepository {
       take: perPage,
       skip: (page - 1) * perPage,
     });
-
+    console.log('aklaz', products, perPage, (page - 1) * perPage);
     return products.map(PrismaProductMapper.toDomain);
   }
 }

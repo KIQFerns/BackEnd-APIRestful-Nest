@@ -50,8 +50,7 @@ export class ProductController {
   @Delete(':id')
   async deleteProduct(
     @Request() request: AuthenticatedRequestModel,
-    @Param(':id') productId: string,
-    @Body() body: EditProductBody,
+    @Param('id') productId: string,
   ) {
     await this.deleteProductUseCase.execute({
       productId,
@@ -62,7 +61,7 @@ export class ProductController {
   @Put(':id')
   async editProduct(
     @Request() request: AuthenticatedRequestModel,
-    @Param(':id') productId: string,
+    @Param('id') productId: string,
     @Body() body: EditProductBody,
   ) {
     const { name, description, quantity, value } = body;
@@ -80,8 +79,7 @@ export class ProductController {
   @Get(':id')
   async getProduct(
     @Request() request: AuthenticatedRequestModel,
-    @Param(':id') productId: string,
-    @Body() body: EditProductBody,
+    @Param('id') productId: string,
   ) {
     const product = await this.getProductUseCase.execute({
       productId,
@@ -94,7 +92,6 @@ export class ProductController {
   @Get()
   async getManyProduct(
     @Request() request: AuthenticatedRequestModel,
-    @Body() body: EditProductBody,
     @Query('page') page: string,
     @Query('perPage') perPage: string,
   ) {

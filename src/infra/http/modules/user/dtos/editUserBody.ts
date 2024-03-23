@@ -4,7 +4,7 @@ import { IsNotEmptyCustom } from 'src/infra/http/classValidators/decorators/isNo
 import { IsStringCustom } from 'src/infra/http/classValidators/decorators/isStringCustom';
 import { MinLengthCustom } from 'src/infra/http/classValidators/decorators/minLengthCustom';
 
-export class CreateUserBody {
+export class EditUserBody {
   @IsNotEmptyCustom()
   @IsStringCustom()
   @IsEmailCustom()

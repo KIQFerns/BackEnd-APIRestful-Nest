@@ -25,8 +25,17 @@ export class UserRepositoryInMemory implements UserRepository {
     throw new Error('Method not implemented.');
   }
 
-  delete(id: string): Promise<User | null> {
+  delete(id: string): Promise<void> {
     //todo
+    throw new Error('Method not implemented.');
+  }
+
+  save(user: User): Promise<void> {
+    //todo
+    throw new Error('Method not implemented.');
+  }
+
+  findMany(page: number, perPage: number): Promise<User[]> {
     throw new Error('Method not implemented.');
   }
 }

@@ -31,10 +31,30 @@ export class PrismaUserRepository implements UserRepository {
 
     return PrismaUserMapper.toDomain(userRaw);
   }
+
   validateAdmin(id: string): Promise<User | null> {
     throw new Error('Method not implemented.');
   }
-  delete(id: string): Promise<User | null> {
-    throw new Error('Method not implemented.');
+
+  async delete(id: string): Promise<void> {
+    await this.prisma.user.delete({ where: { id } });
+  }
+
+  async save(user: User): Promise<void> {
+    const userRaw = PrismaUserMapper.toPrisma(user);
+
+    await this.prisma.user.update({
+      data: userRaw,
+      where: { id: userRaw.id },
+    });
+  }
+
+  async findMany(page: number, perPage: number): Promise<User[]> {
+    const users = await this.prisma.user.findMany({
+      take: perPage,
+      skip: (page - 1) * perPage,
+    });
+
+    return users.map(PrismaUserMapper.toDomain);
   }
 }

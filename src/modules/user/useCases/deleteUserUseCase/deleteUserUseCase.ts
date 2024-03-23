@@ -12,7 +12,7 @@ interface DeleteUserRequest {
 export class DeleteUserUseCase {
   constructor(private userRepository: UserRepository) {}
 
-  async execute({ userId }: DeleteUserRequest) {
+  async execute({ userId, adminId }: DeleteUserRequest) {
     const user = await this.userRepository.findById(userId);
 
     if (!user) throw new UserNotFoundException();

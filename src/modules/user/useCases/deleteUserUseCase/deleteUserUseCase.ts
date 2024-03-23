@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 
 import { UserRepository } from '../../repositories/users.repository';
 import { UserNotFoundException } from '../../exceptions/UserNotFoundException';
-import { UserWithoutPermissionException } from '../../exceptions/userWithoutPermissionException';
 
 interface DeleteUserRequest {
   userId: string;
@@ -13,16 +12,11 @@ interface DeleteUserRequest {
 export class DeleteUserUseCase {
   constructor(private userRepository: UserRepository) {}
 
-  async execute({ adminId, userId }: DeleteUserRequest) {
-    const product = await this.userRepository.findById(userId);
+  async execute({ userId }: DeleteUserRequest) {
+    const user = await this.userRepository.findById(userId);
 
-    const isAdmin = await this.userRepository.validateAdmin(adminId);
+    if (!user) throw new UserNotFoundException();
 
-    if (!product) throw new ProductsNotFoundException();
-
-    if (product.userId != userId)
-      throw new ProductWithoutPermissionException({ actionName: 'deletar' });
-
-    await this.productRepository.delete(productId);
+    await this.userRepository.delete(userId);
   }
 }

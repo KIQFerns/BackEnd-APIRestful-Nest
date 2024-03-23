@@ -21,4 +21,20 @@ export class PrismaUserRepository implements UserRepository {
     if (!user) return null;
     return PrismaUserMapper.toDomain(user);
   }
+
+  async findById(id: string): Promise<User | null> {
+    const userRaw = await this.prisma.user.findUnique({
+      where: { id: id },
+    });
+
+    if (!userRaw) return null;
+
+    return PrismaUserMapper.toDomain(userRaw);
+  }
+  validateAdmin(id: string): Promise<User | null> {
+    throw new Error('Method not implemented.');
+  }
+  delete(id: string): Promise<User | null> {
+    throw new Error('Method not implemented.');
+  }
 }

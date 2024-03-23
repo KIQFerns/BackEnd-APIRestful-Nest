@@ -19,4 +19,14 @@ export class UserRepositoryInMemory implements UserRepository {
     if (!user) return null;
     return user;
   }
+
+  validateAdmin(id: string): Promise<User | null> {
+    //todo
+    throw new Error('Method not implemented.');
+  }
+
+  delete(id: string): Promise<User | null> {
+    //todo
+    throw new Error('Method not implemented.');
+  }
 }

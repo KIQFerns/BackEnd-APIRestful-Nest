@@ -8,4 +8,6 @@ export abstract class UserRepository {
   abstract findById(id: string): Promise<User | null>;
 
   abstract validateAdmin(id: string): Promise<User | null>;
+
+  abstract delete(id: string): Promise<User | null>;
 }

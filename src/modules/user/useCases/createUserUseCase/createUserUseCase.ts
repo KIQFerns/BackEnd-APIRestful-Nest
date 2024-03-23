@@ -15,7 +15,7 @@ interface CreatedUserRequest {
 export class CreateUserUseCase {
   constructor(private userRepository: UserRepository) {}
 
-  async execute({ email, name, password }: CreatedUserRequest) {
+  async execute({ email, name, password, positionId }: CreatedUserRequest) {
     const UserAlreadyExists = await this.userRepository.findByEmail(email);
     if (UserAlreadyExists) throw new UserWithSameEmailException();
     const user = new User({

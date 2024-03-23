@@ -47,7 +47,7 @@ export class PrismaProductRepository implements ProductRepository {
       take: perPage,
       skip: (page - 1) * perPage,
     });
-    console.log('aklaz', products, perPage, (page - 1) * perPage);
+
     return products.map(PrismaProductMapper.toDomain);
   }
 }

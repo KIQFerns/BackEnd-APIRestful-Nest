@@ -17,4 +17,8 @@ export class CreateUserBody {
   @IsStringCustom()
   @MinLengthCustom(6)
   password: string;
+
+  @IsNotEmptyCustom()
+  @IsStringCustom()
+  positionId: string;
 }

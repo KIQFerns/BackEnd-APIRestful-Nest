@@ -2,7 +2,6 @@ import { CreateUserUseCase } from './createUserUseCase';
 import { UserRepositoryInMemory } from '../../repositories/user.repository.memory';
 import { compare } from 'bcrypt';
 import { MakeUser } from '../../factories/user.factory';
-import { CreateProductUseCase } from 'src/modules/product/useCases/createProductUseCase/createProductUseCase';
 
 let createUserUseCase: CreateUserUseCase;
 let userRepositoryInMemory: UserRepositoryInMemory;

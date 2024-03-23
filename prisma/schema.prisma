@@ -33,7 +33,8 @@ model Product {
 }
 
 model Position {
-  id   String @id
-  name String
-  User User[]
+  id        String   @id
+  createdAt DateTime
+  name      String
+  User      User[]
 }

@@ -7,7 +7,7 @@ export const MakeUser = ({ id, ...override }: Override) => {
       email: 'email@email.com',
       name: 'caique',
       password: '123456789',
-      positionId: '',
+      positionId: 'random-123',
       ...override,
     },
     id,

@@ -16,6 +16,7 @@ export class User {
   constructor(props: Replace<UserSchema, { createdAt?: Date }>, id?: string) {
     this.props = {
       ...props,
+      positionId: props.positionId || 'random-123',
       createdAt: props.createdAt || new Date(),
     };
     this._id = id || randomUUID();

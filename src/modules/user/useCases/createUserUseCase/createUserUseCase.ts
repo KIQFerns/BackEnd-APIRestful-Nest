@@ -8,6 +8,7 @@ interface CreatedUserRequest {
   email: string;
   name: string;
   password: string;
+  positionId: string;
 }
 
 @Injectable()
@@ -20,6 +21,7 @@ export class CreateUserUseCase {
     const user = new User({
       email,
       name,
+      positionId,
       password: await hash(password, 10),
     });
 

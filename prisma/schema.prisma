@@ -11,12 +11,14 @@ datasource db {
 }
 
 model User {
-  id        String    @id
-  name      String
-  password  String
-  email     String    @unique
-  createdAt DateTime
-  Product   Product[]
+  id         String    @id
+  name       String
+  password   String
+  email      String    @unique
+  createdAt  DateTime
+  position   Position  @relation(fields: [positionId], references: [id])
+  Product    Product[]
+  positionId String
 }
 
 model Product {
@@ -28,4 +30,10 @@ model Product {
   createdAt   DateTime
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String
+}
+
+model Position {
+  id   String @id
+  name String
+  User User[]
 }

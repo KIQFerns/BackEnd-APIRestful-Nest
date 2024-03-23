@@ -5,6 +5,7 @@ interface UserSchema {
   email: string;
   password: string;
   name: string;
+  positionId: string;
   createdAt: Date;
 }
 
@@ -48,11 +49,14 @@ export class User {
     this.props.name = name;
   }
 
-  get createdAt(): Date {
-    return this.props.createdAt;
+  get positionId(): string {
+    return this.props.positionId;
   }
 
-  set createdAt(createdAt: Date) {
-    this.props.createdAt = createdAt;
+  set positionId(positionId: string) {
+    this.props.positionId = positionId;
+  }
+  get createdAt(): Date {
+    return this.props.createdAt;
   }
 }

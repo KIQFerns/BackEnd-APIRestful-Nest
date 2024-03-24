@@ -5,6 +5,7 @@ export class AuthenticatedRequestModel extends Request {
     id: string;
     email: string;
     name: string;
+    role: string;
     createdAt: string;
   };
 }

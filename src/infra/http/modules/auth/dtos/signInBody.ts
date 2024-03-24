@@ -6,8 +6,7 @@ import { MinLengthCustom } from 'src/infra/http/classValidators/decorators/minLe
 export class SignInBody {
   @IsNotEmptyCustom()
   @IsStringCustom()
-  @IsEmailCustom()
-  email: string;
+  name: string;
 
   @IsStringCustom()
   @MinLengthCustom(6)

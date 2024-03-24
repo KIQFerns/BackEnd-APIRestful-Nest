@@ -8,6 +8,7 @@ import {
   Put,
   Get,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateUserUseCase } from 'src/modules/user/useCases/createUserUseCase/createUserUseCase';
 import { CreateUserBody } from './dtos/createUserBody';
@@ -17,8 +18,13 @@ import { DeleteUserUseCase } from 'src/modules/user/useCases/deleteUserUseCase/d
 import { EditUserBody } from './dtos/editUserBody';
 import { EditUserUseCase } from 'src/modules/user/useCases/editUserUseCase/editUserUseCase';
 import { GetManyUsertUseCase } from 'src/modules/user/useCases/getManyUserUseCase/getManyUserUseCase';
+import { Roles } from '../auth/decorators/roles';
+import { Role } from '../auth/roles/role.enum';
+import { RolesGuard } from '../auth/guards/roles.guard';
+import { JwtAuthGuard } from '../auth/guards/jwtAuth.guard';
 
 @Controller('users')
+@Roles(Role.Admin)
 export class UserController {
   constructor(
     private createUserUseCase: CreateUserUseCase,
@@ -46,7 +52,6 @@ export class UserController {
   ) {
     await this.deleteUserUseCase.execute({
       userId: userId,
-      adminId: request.user.id,
     });
   }
 

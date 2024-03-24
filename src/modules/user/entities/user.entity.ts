@@ -1,4 +1,5 @@
 import { randomUUID } from 'crypto';
+import { Role } from 'src/infra/http/modules/auth/roles/role.enum';
 import { Replace } from 'src/utils/replace';
 
 interface UserSchema {
@@ -16,7 +17,7 @@ export class User {
   constructor(props: Replace<UserSchema, { createdAt?: Date }>, id?: string) {
     this.props = {
       ...props,
-      role: props.role || 'user',
+      role: props.role,
       createdAt: props.createdAt || new Date(),
     };
     this._id = id || randomUUID();

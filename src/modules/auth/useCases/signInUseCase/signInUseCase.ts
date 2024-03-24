@@ -16,6 +16,7 @@ export class SignInUseCase {
       sub: user.id,
       email: user.email,
       name: user.name,
+      role: user.role,
       createdAt: user.createdAt.toJSON(),
     };
     const jwtToken = this.jwtService.sign(payload);

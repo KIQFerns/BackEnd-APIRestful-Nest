@@ -6,6 +6,7 @@ import { IsStringCustom } from 'src/infra/http/classValidators/decorators/isStri
 export class EditProductBody {
   @IsStringCustom()
   @IsNotEmptyCustom()
+  @IsOptional()
   name: string;
 
   @IsStringCustom()
@@ -13,8 +14,10 @@ export class EditProductBody {
   description: string;
 
   @IsNotEmptyCustom()
+  @IsOptional()
   value: Decimal;
 
   @IsNotEmptyCustom()
+  @IsOptional()
   quantity: number;
 }

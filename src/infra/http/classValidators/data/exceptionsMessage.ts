@@ -9,4 +9,6 @@ export const ExceptionMessage = {
     `O campo ${property} deve estar no formato string.`,
   MinLength: (min: number, property: string) =>
     `O campo ${property} deve ter no mínimo ${min} caracteres.`,
+  IsIn: (options: string[], property: string) =>
+    `O campo ${property} deve estar entre as opções: ${options}.`,
 };

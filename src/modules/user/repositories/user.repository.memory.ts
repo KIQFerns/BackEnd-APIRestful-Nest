@@ -20,22 +20,24 @@ export class UserRepositoryInMemory implements UserRepository {
     return user;
   }
 
-  validateAdmin(id: string): Promise<User | null> {
-    //todo
-    throw new Error('Method not implemented.');
+  async findByName(name: string): Promise<User | null> {
+    const user = this.users.find((user) => user.name === name);
+    if (!user) return null;
+    return user;
   }
 
-  delete(id: string): Promise<void> {
-    //todo
-    throw new Error('Method not implemented.');
+  async delete(id: string): Promise<void> {
+    this.users = this.users.filter((user) => user.id != id);
   }
 
-  save(user: User): Promise<void> {
-    //todo
-    throw new Error('Method not implemented.');
-  }
+  async save(user: User): Promise<void> {
+    const userIndex = this.users.findIndex(
+      (currentProduct) => currentProduct.id === user.id,
+    );
 
-  findMany(page: number, perPage: number): Promise<User[]> {
-    throw new Error('Method not implemented.');
+    if (userIndex >= 0) this.users[userIndex] = user;
+  }
+  async findMany(page: number, perPage: number): Promise<User[]> {
+    return this.users.slice((page - 1) * perPage, page * perPage);
   }
 }

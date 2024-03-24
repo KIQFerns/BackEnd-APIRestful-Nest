@@ -19,6 +19,7 @@ describe('Create User', () => {
       email: 'email@email',
       name: 'Vitor',
       password: '123456789',
+      role: 'user',
     });
 
     expect(userRepositoryInMemory.users).toEqual([user]);
@@ -31,6 +32,7 @@ describe('Create User', () => {
       email: 'email@email',
       name: 'Vitor',
       password: userPasswordWithoutEncryption,
+      role: 'user',
     });
 
     const userHasPasswordEncrypted = await compare(
@@ -52,6 +54,7 @@ describe('Create User', () => {
           email: user.email,
           name: 'name',
           password: 'password',
+          role: 'user',
         }),
     );
   });

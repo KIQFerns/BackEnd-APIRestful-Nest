@@ -23,7 +23,7 @@ describe('Validate User', () => {
     userRepositoryInMemory.users = [user];
 
     const result = await validateUserUseCase.execute({
-      email: user.email,
+      name: user.name,
       password: userPasswordWithoutEncryption,
     });
 
@@ -41,14 +41,14 @@ describe('Validate User', () => {
 
     expect(async () => {
       await validateUserUseCase.execute({
-        email: 'incorrect@email',
+        name: 'incorrectName',
         password: userPasswordWithoutEncryption,
       });
     }).rejects.toThrow(AuthValuesIncorrectException);
 
     expect(async () => {
       await validateUserUseCase.execute({
-        email: user.email,
+        name: user.name,
         password: 'incorrect password',
       });
     }).rejects.toThrow(AuthValuesIncorrectException);

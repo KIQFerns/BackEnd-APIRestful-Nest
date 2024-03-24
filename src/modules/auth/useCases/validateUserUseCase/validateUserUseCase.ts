@@ -4,15 +4,15 @@ import { UserRepository } from 'src/modules/user/repositories/users.repository';
 import { AuthValuesIncorrectException } from '../../exceptions/authValueIncorrectException';
 
 interface ValidateUserRequest {
-  email: string;
+  name: string;
   password: string;
 }
 
 @Injectable()
 export class ValidateUserUseCase {
   constructor(private userRepository: UserRepository) {}
-  async execute({ email, password }: ValidateUserRequest) {
-    const user = await this.userRepository.findByEmail(email);
+  async execute({ name, password }: ValidateUserRequest) {
+    const user = await this.userRepository.findByName(name);
 
     if (!user) throw new AuthValuesIncorrectException();
 

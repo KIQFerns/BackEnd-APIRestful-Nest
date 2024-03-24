@@ -4,7 +4,7 @@ import { AppException } from 'src/exceptions/appException';
 export class AuthValuesIncorrectException extends AppException {
   constructor() {
     super({
-      message: 'Email ou senha incorretos',
+      message: 'Nome de usuário ou senha incorretos',
       status: HttpStatus.UNAUTHORIZED,
     });
   }

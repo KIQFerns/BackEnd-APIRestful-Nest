@@ -1,4 +1,4 @@
-import { IsOptional } from 'class-validator';
+import { IsIn, IsOptional } from 'class-validator';
 import { IsEmailCustom } from 'src/infra/http/classValidators/decorators/isEmailCustom';
 import { IsNotEmptyCustom } from 'src/infra/http/classValidators/decorators/isNotEmptyCustom';
 import { IsStringCustom } from 'src/infra/http/classValidators/decorators/isStringCustom';
@@ -22,5 +22,6 @@ export class CreateUserBody {
   @IsNotEmptyCustom()
   @IsStringCustom()
   @IsOptional()
+  @IsIn(['user', 'admin'])
   role: string;
 }

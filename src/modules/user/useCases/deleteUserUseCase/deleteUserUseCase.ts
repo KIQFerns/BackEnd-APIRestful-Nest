@@ -5,14 +5,13 @@ import { UserNotFoundException } from '../../exceptions/UserNotFoundException';
 
 interface DeleteUserRequest {
   userId: string;
-  adminId: string;
 }
 
 @Injectable()
 export class DeleteUserUseCase {
   constructor(private userRepository: UserRepository) {}
 
-  async execute({ userId, adminId }: DeleteUserRequest) {
+  async execute({ userId }: DeleteUserRequest) {
     const user = await this.userRepository.findById(userId);
 
     if (!user) throw new UserNotFoundException();

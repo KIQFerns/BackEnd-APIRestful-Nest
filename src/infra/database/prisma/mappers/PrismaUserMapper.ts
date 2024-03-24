@@ -1,5 +1,7 @@
+import { Role } from 'src/infra/http/modules/auth/roles/role.enum';
 import { User } from '../../../../modules/user/entities/user.entity';
 import { User as UserRaw } from '@prisma/client';
+
 export class PrismaUserMapper {
   static toPrisma({
     createdAt,
@@ -14,7 +16,7 @@ export class PrismaUserMapper {
       name,
       password,
       email,
-      role,
+      role: role,
       id,
     };
   }

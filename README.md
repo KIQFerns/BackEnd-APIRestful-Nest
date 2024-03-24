@@ -2,6 +2,10 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript example repository.
 
+## Config
+
+configurar env (tem um modelo como env.example)
+
 ## Installation
 
 ```bash
@@ -20,6 +24,9 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
+## Documentation
+http://localhost:3000/api#/
 
 ## Test
 

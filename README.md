@@ -4,6 +4,10 @@
 
 ## Installation
 
+configurar env (tem um modelo como env.example)
+
+## Installation
+
 ```bash
 $ npm install
 ```

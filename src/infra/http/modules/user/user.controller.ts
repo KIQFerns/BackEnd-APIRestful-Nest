@@ -20,9 +20,10 @@ import { EditUserUseCase } from 'src/modules/user/useCases/editUserUseCase/editU
 import { GetManyUsertUseCase } from 'src/modules/user/useCases/getManyUserUseCase/getManyUserUseCase';
 import { Roles } from '../auth/decorators/roles';
 import { Role } from '../auth/roles/role.enum';
-import { RolesGuard } from '../auth/guards/roles.guard';
-import { JwtAuthGuard } from '../auth/guards/jwtAuth.guard';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiBearerAuth()
+@ApiTags('user')
 @Controller('users')
 @Roles(Role.Admin)
 export class UserController {

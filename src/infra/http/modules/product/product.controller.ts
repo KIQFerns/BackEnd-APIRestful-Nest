@@ -18,7 +18,10 @@ import { EditProductBody } from './dtos/editProductBody';
 import { DeleteProductUseCase } from 'src/modules/product/useCases/deleteProductUseCase/deleteProductUseCase';
 import { GetProductUseCase } from 'src/modules/product/useCases/getProductUseCase/getProductUseCase';
 import { GetManyProductUseCase } from 'src/modules/product/useCases/getManyProductUseCase/getManyProductUseCase';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiBearerAuth()
+@ApiTags('product')
 @Controller('products')
 export class ProductController {
   constructor(

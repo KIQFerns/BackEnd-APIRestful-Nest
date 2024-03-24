@@ -5,25 +5,30 @@ import { IsStringCustom } from 'src/infra/http/classValidators/decorators/isStri
 import { MinLengthCustom } from 'src/infra/http/classValidators/decorators/minLengthCustom';
 import { Role } from '../../auth/roles/role.enum';
 import { IsInCustom } from 'src/infra/http/classValidators/decorators/isInCustome';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class EditUserBody {
+  @ApiProperty()
   @IsNotEmptyCustom()
   @IsStringCustom()
   @IsEmailCustom()
   @IsOptional()
   email: string;
 
+  @ApiProperty()
   @IsNotEmptyCustom()
   @IsStringCustom()
   @IsOptional()
   name: string;
 
+  @ApiProperty()
   @IsNotEmptyCustom()
   @IsStringCustom()
   @MinLengthCustom(6)
   @IsOptional()
   password: string;
 
+  @ApiProperty()
   @IsNotEmptyCustom()
   @IsStringCustom()
   @IsOptional()

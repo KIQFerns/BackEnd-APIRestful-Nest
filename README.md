@@ -10,6 +10,7 @@ configurar env (tem um modelo como env.example)
 
 ```bash
 $ npm install
+$ npx prisma migrate dev
 ```
 
 ## Running the app

@@ -22,5 +22,5 @@ export class CreateUserBody {
   @IsNotEmptyCustom()
   @IsStringCustom()
   @IsOptional()
-  positionId: string;
+  role: string;
 }

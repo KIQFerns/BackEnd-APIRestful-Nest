@@ -22,5 +22,5 @@ export class EditUserBody {
   @IsNotEmptyCustom()
   @IsStringCustom()
   @IsOptional()
-  positionId: string;
+  role: string;
 }

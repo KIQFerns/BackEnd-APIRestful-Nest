@@ -4,8 +4,6 @@ import { UserRepository } from 'src/modules/user/repositories/users.repository';
 import { PrismaUserRepository } from './repositories/prismaUserRepository';
 import { ProductRepository } from 'src/modules/product/repositories/product.repository';
 import { PrismaProductRepository } from './repositories/prismaProductRepository';
-import { PositionRepository } from 'src/modules/position/repositories/position.repository';
-import { PrismaPositionRepository } from './repositories/prismaPositionRepository';
 
 @Module({
   providers: [
@@ -17,10 +15,6 @@ import { PrismaPositionRepository } from './repositories/prismaPositionRepositor
     {
       provide: ProductRepository,
       useClass: PrismaProductRepository,
-    },
-    {
-      provide: PositionRepository,
-      useClass: PrismaPositionRepository,
     },
   ],
   exports: [UserRepository, ProductRepository],

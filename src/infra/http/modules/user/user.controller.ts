@@ -29,12 +29,12 @@ export class UserController {
 
   @Post()
   async createUser(@Body() body: CreateUserBody) {
-    const { email, name, password, positionId } = body;
+    const { email, name, password, role } = body;
     const user = await this.createUserUseCase.execute({
       name,
       email,
       password,
-      positionId,
+      role,
     });
     return UserViewModel.toHttp(user);
   }
@@ -56,13 +56,13 @@ export class UserController {
     @Param('id') userId: string,
     @Body() body: EditUserBody,
   ) {
-    const { name, email, password, positionId } = body;
+    const { name, email, password, role } = body;
     await this.editUserUseCase.execute({
       userId,
       name,
       email,
       password,
-      positionId,
+      role,
     });
   }
 

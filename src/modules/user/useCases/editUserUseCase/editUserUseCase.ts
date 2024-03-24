@@ -8,20 +8,14 @@ interface EditUserRequest {
   name: string;
   email: string;
   password: string;
-  positionId: string;
+  role: string;
 }
 
 @Injectable()
 export class EditUserUseCase {
   constructor(private userRepository: UserRepository) {}
 
-  async execute({
-    userId,
-    name,
-    email,
-    password,
-    positionId,
-  }: EditUserRequest) {
+  async execute({ userId, name, email, password, role }: EditUserRequest) {
     const user = await this.userRepository.findById(userId);
 
     if (!user) throw new UserNotFoundException();
@@ -29,7 +23,7 @@ export class EditUserUseCase {
     user.name = name;
     user.email = email;
     user.password = await hash(password, 10);
-    user.positionId = positionId;
+    user.role = role;
 
     await this.userRepository.save(user);
   }

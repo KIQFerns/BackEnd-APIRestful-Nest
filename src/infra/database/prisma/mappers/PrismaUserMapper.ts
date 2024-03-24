@@ -6,7 +6,7 @@ export class PrismaUserMapper {
     name,
     password,
     email,
-    positionId,
+    role,
     id,
   }: User): UserRaw {
     return {
@@ -14,7 +14,7 @@ export class PrismaUserMapper {
       name,
       password,
       email,
-      positionId,
+      role,
       id,
     };
   }
@@ -25,8 +25,8 @@ export class PrismaUserMapper {
     name,
     password,
     email,
-    positionId,
+    role,
   }: UserRaw): User {
-    return new User({ createdAt, name, password, email, positionId }, id);
+    return new User({ createdAt, name, password, email, role }, id);
   }
 }

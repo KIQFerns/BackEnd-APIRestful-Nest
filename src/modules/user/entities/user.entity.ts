@@ -5,7 +5,7 @@ interface UserSchema {
   email: string;
   password: string;
   name: string;
-  positionId: string;
+  role: string;
   createdAt: Date;
 }
 
@@ -16,7 +16,7 @@ export class User {
   constructor(props: Replace<UserSchema, { createdAt?: Date }>, id?: string) {
     this.props = {
       ...props,
-      positionId: props.positionId || 'random-123',
+      role: props.role || 'user',
       createdAt: props.createdAt || new Date(),
     };
     this._id = id || randomUUID();
@@ -50,12 +50,12 @@ export class User {
     this.props.name = name;
   }
 
-  get positionId(): string {
-    return this.props.positionId;
+  get role(): string {
+    return this.props.role;
   }
 
-  set positionId(positionId: string) {
-    this.props.positionId = positionId;
+  set role(role: string) {
+    this.props.role = role;
   }
   get createdAt(): Date {
     return this.props.createdAt;

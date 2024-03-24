@@ -2,7 +2,7 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript example repository.
 
-## Installation
+## Config
 
 configurar env (tem um modelo como env.example)
 

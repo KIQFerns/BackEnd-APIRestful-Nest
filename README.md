@@ -4,7 +4,7 @@
 
 ## Config
 
-configurar env (tem um modelo como env.example)
+ - crie um arquivo .env na raiz do projeto para criar as variaveis de ambiente (tem um modelo na raiz: env.example);
 
 ## Installation
 
@@ -27,7 +27,7 @@ $ npm run start:prod
 ```
 
 ## Documentation
-http://localhost:3000/api#/
+ - http://localhost:3000/api#/
 
 ## Test
 

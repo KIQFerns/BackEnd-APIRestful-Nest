@@ -8,23 +8,27 @@ import { IsInCustom } from 'src/infra/http/classValidators/decorators/isInCustom
 import { ApiProperty } from '@nestjs/swagger';
 
 export class EditUserBody {
+  @ApiProperty()
   @IsNotEmptyCustom()
   @IsStringCustom()
   @IsEmailCustom()
   @IsOptional()
   email: string;
 
+  @ApiProperty()
   @IsNotEmptyCustom()
   @IsStringCustom()
   @IsOptional()
   name: string;
 
+  @ApiProperty()
   @IsNotEmptyCustom()
   @IsStringCustom()
   @MinLengthCustom(6)
   @IsOptional()
   password: string;
 
+  @ApiProperty()
   @IsNotEmptyCustom()
   @IsStringCustom()
   @IsOptional()

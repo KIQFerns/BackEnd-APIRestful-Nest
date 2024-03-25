@@ -5,19 +5,23 @@ import { IsNotEmptyCustom } from 'src/infra/http/classValidators/decorators/isNo
 import { IsStringCustom } from 'src/infra/http/classValidators/decorators/isStringCustom';
 
 export class EditProductBody {
+  @ApiProperty()
   @IsStringCustom()
   @IsNotEmptyCustom()
   @IsOptional()
   name: string;
 
+  @ApiProperty()
   @IsStringCustom()
   @IsOptional()
   description: string;
 
+  @ApiProperty()
   @IsNotEmptyCustom()
   @IsOptional()
   value: Decimal;
 
+  @ApiProperty()
   @IsNotEmptyCustom()
   @IsOptional()
   quantity: number;

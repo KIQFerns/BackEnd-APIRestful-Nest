@@ -6,24 +6,20 @@ import { IsStringCustom } from 'src/infra/http/classValidators/decorators/isStri
 import { MinLengthCustom } from 'src/infra/http/classValidators/decorators/minLengthCustom';
 
 export class CreateUserBody {
-  @ApiProperty()
   @IsNotEmptyCustom()
   @IsStringCustom()
   @IsEmailCustom()
   email: string;
 
-  @ApiProperty()
   @IsNotEmptyCustom()
   @IsStringCustom()
   name: string;
 
-  @ApiProperty()
   @IsNotEmptyCustom()
   @IsStringCustom()
   @MinLengthCustom(6)
   password: string;
 
-  @ApiProperty()
   @IsNotEmptyCustom()
   @IsStringCustom()
   @IsOptional()

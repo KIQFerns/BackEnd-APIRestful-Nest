@@ -7,22 +7,18 @@ import { IsNumberCustom } from 'src/infra/http/classValidators/decorators/isNumb
 import { IsStringCustom } from 'src/infra/http/classValidators/decorators/isStringCustom';
 
 export class CreateProductBody {
-  @ApiProperty()
   @IsStringCustom()
   @IsNotEmptyCustom()
   name: string;
 
-  @ApiProperty()
   @IsStringCustom()
   @IsOptional()
   description: string;
 
-  @ApiProperty()
   @IsDecimalCustom()
   @IsNotEmptyCustom()
   value: Decimal;
 
-  @ApiProperty()
   @IsNumberCustom()
   @IsNotEmptyCustom()
   quantity: number;

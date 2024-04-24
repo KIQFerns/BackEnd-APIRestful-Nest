@@ -1,12 +1,18 @@
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript example repository.
+Sistema de Login com crud de usuário e produto simples.
 
-## Config
+## Tecnologias
 
- - **crie um arquivo **.env na raiz do projeto para criar as variaveis de ambiente (tem um modelo na raiz: env.example);
+Node.js
+Nest.js
+APIRestful
+Prisma
+SQLite
 
 ## Installation
+
+ - **crie um arquivo **.env na raiz do projeto para criar as variaveis de ambiente (tem um modelo na raiz: env.example);
 
 ```bash
 $ npm install

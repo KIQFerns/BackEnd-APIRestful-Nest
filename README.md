@@ -4,11 +4,11 @@ Sistema de Login com crud de usuário e produto simples.
 
 ## Tecnologias
 
-Node.js
-Nest.js
-APIRestful
-Prisma
-SQLite
+ - Node.js
+ - Nest.js
+ - APIRestful
+ - Prisma
+ - SQLite
 
 ## Installation
 

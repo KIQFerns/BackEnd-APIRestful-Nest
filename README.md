@@ -2,7 +2,7 @@
 
 Sistema de Login com crud de usuário e produto simples.
 
-## Tecnologias
+## Tecnology
 
  - Node.js
  - Nest.js
